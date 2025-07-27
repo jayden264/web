@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /admin.html
+Disallow: /login.html
+Disallow: /client-dashboard.html
+
+Sitemap: https://mellifluous-sprite-26b25f.netlify.app/sitemap.xml

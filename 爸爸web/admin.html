@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>客户管理系统 - 专业整骨诊所</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="admin.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body class="admin-body">
+    <div class="admin-container">
+        <!-- 侧边栏 -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>管理系统</h2>
+                <p id="welcomeUser">欢迎，管理员</p>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="#dashboard" class="nav-link active" data-section="dashboard">📊 仪表盘</a></li>
+                    <li><a href="#customers" class="nav-link" data-section="customers">👥 客户管理</a></li>
+                    <li><a href="#appointments" class="nav-link" data-section="appointments">📅 预约管理</a></li>
+                    <li><a href="#records" class="nav-link" data-section="records">📋 治疗记录</a></li>
+                    <li><a href="#settings" class="nav-link" data-section="settings">⚙️ 系统设置</a></li>
+                </ul>
+            </nav>
+            <div class="sidebar-footer">
+                <button id="logoutBtn" class="logout-btn">退出登录</button>
+            </div>
+        </aside>
+
+        <!-- 主内容区 -->
+        <main class="main-content">
+            <header class="content-header">
+                <h1 id="pageTitle">仪表盘</h1>
+                <div class="header-actions">
+                    <span id="currentTime"></span>
+                </div>
+            </header>
+
+            <!-- 仪表盘 -->
+            <section id="dashboard" class="content-section active">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">👥</div>
+                        <div class="stat-info">
+                            <h3 id="totalCustomers">0</h3>
+                            <p>总客户数</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">📅</div>
+                        <div class="stat-info">
+                            <h3 id="todayAppointments">0</h3>
+                            <p>今日预约</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">📋</div>
+                        <div class="stat-info">
+                            <h3 id="totalRecords">0</h3>
+                            <p>治疗记录</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">💰</div>
+                        <div class="stat-info">
+                            <h3 id="monthlyRevenue">RM 0</h3>
+                            <p>本月收入</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="recent-activities">
+                    <h3>最近活动</h3>
+                    <div id="recentActivities" class="activity-list">
+                        <!-- 动态加载 -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- 客户管理 -->
+            <section id="customers" class="content-section">
+                <div class="section-header">
+                    <h3>客户管理</h3>
+                    <button id="addCustomerBtn" class="btn btn-primary">+ 添加客户</button>
+                </div>
+                <div class="search-bar">
+                    <input type="text" id="customerSearch" placeholder="搜索客户姓名或电话...">
+                </div>
+                <div class="table-container">
+                    <table id="customersTable" class="data-table">
+                        <thead>
+                            <tr>
+                                <th>姓名</th>
+                                <th>电话</th>
+                                <th>年龄</th>
+                                <th>注册日期</th>
+                                <th>最后就诊</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- 动态加载 -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- 预约管理 -->
+            <section id="appointments" class="content-section">
+                <div class="section-header">
+                    <h3>预约管理</h3>
+                    <button id="addAppointmentBtn" class="btn btn-primary">+ 新增预约</button>
+                </div>
+                <div class="appointment-filters">
+                    <select id="dateFilter">
+                        <option value="today">今天</option>
+                        <option value="week">本周</option>
+                        <option value="month">本月</option>
+                    </select>
+                    <select id="statusFilter">
+                        <option value="all">所有状态</option>
+                        <option value="pending">待确认</option>
+                        <option value="confirmed">已确认</option>
+                        <option value="completed">已完成</option>
+                        <option value="cancelled">已取消</option>
+                    </select>
+                </div>
+                <div class="table-container">
+                    <table id="appointmentsTable" class="data-table">
+                        <thead>
+                            <tr>
+                                <th>客户姓名</th>
+                                <th>预约时间</th>
+                                <th>服务项目</th>
+                                <th>状态</th>
+                                <th>备注</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- 动态加载 -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- 治疗记录 -->
+            <section id="records" class="content-section">
+                <div class="section-header">
+                    <h3>治疗记录</h3>
+                    <button id="addRecordBtn" class="btn btn-primary">+ 添加记录</button>
+                </div>
+                <div class="search-bar">
+                    <input type="text" id="recordSearch" placeholder="搜索客户或治疗内容...">
+                </div>
+                <div class="table-container">
+                    <table id="recordsTable" class="data-table">
+                        <thead>
+                            <tr>
+                                <th>客户姓名</th>
+                                <th>治疗日期</th>
+                                <th>治疗项目</th>
+                                <th>症状描述</th>
+                                <th>治疗方案</th>
+                                <th>费用</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- 动态加载 -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- 系统设置 -->
+            <section id="settings" class="content-section">
+                <div class="settings-grid">
+                    <div class="setting-card">
+                        <h4>诊所信息</h4>
+                        <form id="clinicInfoForm">
+                            <div class="form-group">
+                                <label>诊所名称</label>
+                                <input type="text" id="clinicName" value="专业整骨诊所">
+                            </div>
+                            <div class="form-group">
+                                <label>联系电话</label>
+                                <input type="tel" id="clinicPhone" value="+6017-852-7777">
+                            </div>
+                            <div class="form-group">
+                                <label>诊所地址</label>
+                                <textarea id="clinicAddress">Sarawak, Kuching, Iris Garden, Jalan Rock, 邮政编码: 93250</textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">保存设置</button>
+                        </form>
+                    </div>
+                    <div class="setting-card">
+                        <h4>营业时间</h4>
+                        <form id="businessHoursForm">
+                            <div class="form-group">
+                                <label>工作日</label>
+                                <input type="text" id="weekdayHours" value="9:00-18:00">
+                            </div>
+                            <div class="form-group">
+                                <label>周末</label>
+                                <input type="text" id="weekendHours" value="预约制">
+                            </div>
+                            <button type="submit" class="btn btn-primary">保存设置</button>
+                        </form>
+                    </div>
+                    <div class="setting-card">
+                        <h4>预约时间段管理</h4>
+                        <div class="time-groups-section">
+                            <div class="add-time-group">
+                                <h5>添加新时间段</h5>
+                                <form id="addTimeGroupForm">
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label>时间段名称</label>
+                                            <input type="text" id="groupName" placeholder="例如：上午第一节" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>开始时间</label>
+                                            <input type="time" id="groupStartTime" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>结束时间</label>
+                                            <input type="time" id="groupEndTime" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <button type="submit" class="btn btn-primary btn-sm">添加时间段</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            
+                            <div class="time-groups-list">
+                                <h5>已设置的时间段</h5>
+                                <div id="timeGroupsList" class="groups-container">
+                                    <!-- 动态加载时间段 -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="setting-card">
+                        <h4>预约时间设置</h4>
+                        <form id="appointmentTimeForm">
+                            <div class="form-group">
+                                <label>开始时间</label>
+                                <input type="time" id="appointmentStartTime" value="09:00">
+                            </div>
+                            <div class="form-group">
+                                <label>结束时间</label>
+                                <input type="time" id="appointmentEndTime" value="18:00">
+                            </div>
+                            <div class="form-group">
+                                <label>时间间隔（分钟）</label>
+                                <select id="appointmentInterval">
+                                    <option value="30">30分钟</option>
+                                    <option value="60" selected>60分钟</option>
+                                    <option value="90">90分钟</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary">保存设置</button>
+                        </form>
+                    </div>
+                    <div class="setting-card full-width">
+                        <h4>密码重置请求</h4>
+                        <div class="table-container">
+                            <table id="resetRequestsTable" class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>客户姓名</th>
+                                        <th>手机号码</th>
+                                        <th>申请时间</th>
+                                        <th>状态</th>
+                                        <th>操作</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="resetRequestsBody">
+                                    <!-- 动态加载 -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- 模态框 -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="modalBody">
+                <!-- 动态内容 -->
+            </div>
+        </div>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+</html>
