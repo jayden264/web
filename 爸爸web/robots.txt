@@ -1,8 +1,7 @@
 User-agent: *
 Allow: /
 Disallow: /admin.html
-Disallow: /login.html
 Disallow: /client-dashboard.html
+Disallow: /login.html
 
-<!-- 第7行 -->
-Sitemap: https://web-yste-cswz3d0t4-jaydens-projects-d1195fe9.vercel.app/sitemap.xml
+Sitemap: https://web-yste.vercel.app/sitemap.xml
