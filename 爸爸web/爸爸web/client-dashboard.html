@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的健康档案 - 专业整骨诊所</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="admin.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="dashboard-container">
+        <header class="dashboard-header">
+            <div class="header-content">
+                <h1>我的健康档案</h1>
+                <div class="user-info">
+                    <span id="clientName">客户姓名</span>
+                    <button onclick="logout()" class="btn btn-secondary">退出登录</button>
+                </div>
+            </div>
+        </header>
+
+        <main class="dashboard-main">
+            <div class="dashboard-grid">
+                <!-- 个人信息卡片 -->
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <h3>个人信息</h3>
+                    </div>
+                    <div class="card-content">
+                        <div class="info-item">
+                            <label>姓名：</label>
+                            <span id="displayName">-</span>
+                        </div>
+                        <div class="info-item">
+                            <label>手机：</label>
+                            <span id="displayPhone">-</span>
+                        </div>
+                        <div class="info-item">
+                            <label>年龄：</label>
+                            <span id="displayAge">-</span>
+                        </div>
+                        <div class="info-item">
+                            <label>注册时间：</label>
+                            <span id="displayRegDate">-</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 预约记录 -->
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <h3>我的预约</h3>
+                        <button onclick="showNewAppointment()" class="btn btn-primary btn-sm">新建预约</button>
+                    </div>
+                    <div class="card-content">
+                        <div id="appointmentsList" class="appointments-list">
+                            <!-- 预约记录将在这里显示 -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 治疗记录 -->
+                <div class="dashboard-card full-width">
+                    <div class="card-header">
+                        <h3>治疗记录</h3>
+                    </div>
+                    <div class="card-content">
+                        <div id="treatmentsList" class="treatments-list">
+                            <!-- 治疗记录将在这里显示 -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- 新建预约模态框 -->
+    <div id="appointmentModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>预约治疗</h3>
+                <span class="close" onclick="closeAppointmentModal()">&times;</span>
+            </div>
+            <form id="appointmentForm">
+                <div class="form-group">
+                    <label for="appointmentDate">预约日期</label>
+                    <input type="date" id="appointmentDate" required>
+                </div>
+                <div class="form-group">
+                    <label for="appointmentTime">预约时间</label>
+                    <select id="appointmentTime" required>
+                        <option value="">请选择时间</option>
+                        <option value="09:30">09:30</option>
+                        <option value="10:30">10:30</option>
+                        <option value="11:30">11:30</option>
+                        <option value="14:00">14:00</option>
+                        <option value="15:00">15:00</option>
+                        <option value="16:00">16:00</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="appointmentSymptoms">症状描述</label>
+                    <textarea id="appointmentSymptoms" rows="3" placeholder="请描述您的症状或治疗需求"></textarea>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" onclick="closeAppointmentModal()" class="btn btn-secondary">取消</button>
+                    <button type="submit" class="btn btn-primary">提交预约</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="client-dashboard.js"></script>
+</body>
+</html>

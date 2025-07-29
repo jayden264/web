@@ -4,5 +4,4 @@ Disallow: /admin.html
 Disallow: /login.html
 Disallow: /client-dashboard.html
 
-<!-- 第7行 -->
-Sitemap: https://web-yste-cswz3d0t4-jaydens-projects-d1195fe9.vercel.app/sitemap.xml
+Sitemap: https://mellifluous-sprite-26b25f.netlify.app/sitemap.xml
