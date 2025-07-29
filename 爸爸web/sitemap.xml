@@ -1,16 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <!-- 第4行 -->
-    <loc>https://web-yste-cswz3d0t4-jaydens-projects-d1195fe9.vercel.app/</loc>
-    
-    <!-- 第10行 -->
-    <loc>https://web-yste-cswz3d0t4-jaydens-projects-d1195fe9.vercel.app/client-login.html</loc>
-    
-    <!-- 第16行 -->
-    <loc>https://web-yste-cswz3d0t4-jaydens-projects-d1195fe9.vercel.app/login.html</loc>
-    <lastmod>2024-12-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
+    <url>
+        <loc>https://web-yste-cswz3d0t4-jaydens-projects-d1195fe9.vercel.app/</loc>
+        <lastmod>2024-12-19</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+    </url>
+    <url>
+        <loc>https://web-yste-cswz3d0t4-jaydens-projects-d1195fe9.vercel.app/client-login.html</loc>
+        <lastmod>2024-12-19</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://web-yste-cswz3d0t4-jaydens-projects-d1195fe9.vercel.app/login.html</loc>
+        <lastmod>2024-12-19</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
 </urlset>
